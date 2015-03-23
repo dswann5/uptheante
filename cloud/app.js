@@ -10,8 +10,18 @@ app.use(express.bodyParser());    // Middleware for reading request body
 
 // This is an example of hooking up a request handler with a specific request
 // path and HTTP verb using the Express routing API.
-app.get('/', function(req, res) {
+app.get('/hello', function(req, res) {
   res.render('hello', { message: 'Welcome to the UpTheAnte page!' });
+});
+
+app.post('/hello', function(req, res) {
+  console.log("New post request: " + req.body.message);
+  res.render('hello', { message: req.body.message });
+});
+
+app.post('/echo', function(req, res) {
+  res.set('Content-Type', 'text/plain');
+  res.send('echoing: ' + req.body.message);
 });
 
 // // Example reading from the request query string of an HTTP get request.
@@ -25,6 +35,11 @@ app.get('/', function(req, res) {
 //   // POST http://example.parseapp.com/test (with request body "message=hello")
 //   res.send(req.body.message);
 // });
+
+/*app.post('/echo', function(req, res) {
+  res.set('Content-Type', 'text/plain');
+  res.send('echoing: ' + req.body.message);
+});*/
 
 // Attach the Express app to Cloud Code.
 app.listen();
