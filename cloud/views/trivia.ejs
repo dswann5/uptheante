@@ -7,9 +7,16 @@
     <h1>UpTheAnte Sample Trivia</h1>
     <p><%= message %></p>
 
+    <h2>Which one of the Ravens team members recently published a high-level mathematics paper to the Journal of Computational Mathematics?</h2>
+
     <form method="post" action="/trivia">
       <p>
-        <input name="answer"></input>
+	<input type="radio" name="answer" value = "Ray Rice">Ray Rice<br>	
+	<input type="radio" name="answer" value = "John Urschel">John Urschel<br> 
+	<input type="radio" name="answer" value = "Joe Flacco">Joe Flacco<br>
+	<input type="radio" name="answer" value = "Ray Lewis">Ray Lewis<br>
+      </p>
+      <p>
         <input class="button" type="submit" value="Choose answer">
       </p>
     </form>

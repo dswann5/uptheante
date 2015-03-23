@@ -16,7 +16,12 @@ app.get('/trivia', function(req, res) {
 
 app.post('/trivia', function(req, res) {
   console.log("New trivia post request: " + req.body.answer);
-  res.render('trivia', { message: req.body.answer });
+  if (req.body.answer == "John Urschel") {
+       res.render('trivia', { message: req.body.answer + " is right!" });
+  }
+  else {
+       res.render('trivia', { message: req.body.answer + " is wrong!" });
+  }
 });
 
 app.post('/echo', function(req, res) {
