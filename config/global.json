@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "UpTheAnte": {
+            "applicationId": "H3wtdrzdER3miK1cjTU7GPVXZugHO25h2dMHFnMF", 
+            "masterKey": "RdbjSctZefqWr062LkdEHPLmTGHUeYrZMaYf8Szu"
+        }, 
+        "_default": {
+            "link": "UpTheAnte"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.3.5"
+    }
+}
