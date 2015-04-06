@@ -24,6 +24,10 @@ app.post('/trivia', function(req, res) {
   }
 });
 
+app.get('/clickmania', function(req, res) {
+  res.render('clickmania', { message: 'Click your heart out!' });
+});
+
 app.post('/echo', function(req, res) {
   res.set('Content-Type', 'text/plain');
   res.send('echoing: ' + req.body.message);
