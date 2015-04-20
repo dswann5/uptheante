@@ -1,20 +1,35 @@
 <!DOCTYPE html>
 <html>
+  <!--<meta http-equiv="refresh" content="1">-->
   <head>
     <title>UpTheAnte</title>
-  </head>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+ 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>  
+ 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+   </head>
   <body>
-    <h1>UpTheAnte Click Counter</h1>
+    <h1>UpTheAnte Virtual JumboTron</h1>
     <p><%= message %></p>
     
-    <p><b>Duke Score: <%= duke_score %></b></p> 
-    <p><b>Wisconsin Score: <%= wisconsin_score %></b></p>    
-
+    <div class="hopkins_bar"><p><b>Hopkins Score: <%= hopkins_score %></b></p> </div> 
+    <div class="maryland_bar"><p><b>Maryland Score: <%= maryland_score %></b></p> </div>
+  
+    <p><b>Debug: <%= debug %></b></p> 
+     
     <label id="minutes">00</label>:<label id="seconds">00</label>
+    <div class="chart"></div>
     <script type="text/javascript">
         var minutesLabel = document.getElementById("minutes");
         var secondsLabel = document.getElementById("seconds");
         var totalSeconds = 0;
+        var delta = 10;
+        var firstScore = 0;
+	var secondScore = 0;
+       	firstScore += Math.floor((Math.random() * 10) + 1);
+        secondScore += Math.floor((Math.random() * 10) + 1);
+ 
         setInterval(setTime, 1000);
 
         function setTime()
@@ -40,7 +55,24 @@
                 return valString;
             }
         }
-    </script>
+   
+    var hopkins_score = [firstScore];
+    var maryland_score = [secondScore];
+    var names = ["Hopkins: ", "Maryland: "]
 
-  </body>
+    d3.select(".hopkins_bar")
+    .data(hopkins_score)
+    .style("width", function(d) { return d * 10 + "px"; })
+    .text(function(d) { return names[0]+d; })
+    .style("background-color", "lightblue");
+   
+    d3.select(".maryland_bar")
+    .data(maryland_score)
+    .style("width", function(d) { return d * 10 + "px"; })
+    .text(function(d) { return names[1]+d; })
+    .style("background-color", "red");
+    
+   </script> 
+   </body>
+
 </html>

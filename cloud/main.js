@@ -8,7 +8,7 @@ Parse.Cloud.define("hello", function(request, response) {
 });
 
 Parse.Cloud.define("clickmania", function(request, response) {
-  response.success("KEC51QDLDA");
+  response.success("pK5BDCZhbg");
 });
 
 Parse.Cloud.define("clickmania_duke", function(request, response) {

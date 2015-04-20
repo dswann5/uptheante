@@ -26,40 +26,21 @@ app.post('/trivia', function(req, res) {
 
 app.get('/clickmania', function(req, res) {
 
-  var scores = "0";
+  var scores = [];
+  var stuff = "test";
+
   var clickSesh = Parse.Object.extend("ClickSesh");
-
   var query = new Parse.Query(clickSesh);
-  query.get("KEC51QDLDA", {
-    success: function(object) {
-    // object is an instance of Parse.Object
-    console.log("YES");
-  },
-
-  error: function(object, error) {
-    // error is an instance of Parse.Error.
-    console.log("NO");
-  }
-});
-
- /* var query = new Parse.Query("ClickSesh");
   query.find({
   success: function(results) {
-    scores = results.get("duke_score");
-    console.log(scores);
+    stuff = results.length.toString();
   },
-
   error: function(error) {
-    // error is an instance of Parse.Error.
-    console.log(error);
+    stuff = error.message.toString();
   }
-});*/
-  res.render('clickmania', { message: 'Click your heart out!', duke_score: scores, wisconsin_score: scores});
 });
 
-app.post('/echo', function(req, res) {
-  res.set('Content-Type', 'text/plain');
-  res.send('echoing: ' + req.body.message);
+  res.render('clickmania', { message: 'Click as fast as possible!', hopkins_score: scores+1, maryland_score: scores, debug: stuff});
 });
 
 // // Example reading from the request query string of an HTTP get request.
