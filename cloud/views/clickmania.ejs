@@ -6,6 +6,9 @@
   <body>
     <h1>UpTheAnte Click Counter</h1>
     <p><%= message %></p>
+    
+    <p><b>Duke Score: <%= duke_score %></b></p> 
+    <p><b>Wisconsin Score: <%= wisconsin_score %></b></p>    
 
     <label id="minutes">00</label>:<label id="seconds">00</label>
     <script type="text/javascript">
@@ -16,6 +19,10 @@
 
         function setTime()
         {
+	    if (totalSeconds == 30)
+	    {
+		totalSeconds = 0;
+	    }
             ++totalSeconds;
             secondsLabel.innerHTML = pad(totalSeconds%60);
             minutesLabel.innerHTML = pad(parseInt(totalSeconds/60));
@@ -34,8 +41,6 @@
             }
         }
     </script>
-
-    </form>
 
   </body>
 </html>

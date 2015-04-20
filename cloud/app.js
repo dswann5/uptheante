@@ -17,15 +17,44 @@ app.get('/trivia', function(req, res) {
 app.post('/trivia', function(req, res) {
   console.log("New trivia post request: " + req.body.answer);
   if (req.body.answer == "John Urschel") {
-       res.render('trivia', { message: req.body.answer + " is right!" });
+       res.render('trivia', { message: req.body.answer + " is correct!" });
   }
   else {
-       res.render('trivia', { message: req.body.answer + " is wrong!" });
+       res.render('trivia', { message: req.body.answer + " is incorrect!" });
   }
 });
 
 app.get('/clickmania', function(req, res) {
-  res.render('clickmania', { message: 'Click your heart out!' });
+
+  var scores = "0";
+  var clickSesh = Parse.Object.extend("ClickSesh");
+
+  var query = new Parse.Query(clickSesh);
+  query.get("KEC51QDLDA", {
+    success: function(object) {
+    // object is an instance of Parse.Object
+    console.log("YES");
+  },
+
+  error: function(object, error) {
+    // error is an instance of Parse.Error.
+    console.log("NO");
+  }
+});
+
+ /* var query = new Parse.Query("ClickSesh");
+  query.find({
+  success: function(results) {
+    scores = results.get("duke_score");
+    console.log(scores);
+  },
+
+  error: function(error) {
+    // error is an instance of Parse.Error.
+    console.log(error);
+  }
+});*/
+  res.render('clickmania', { message: 'Click your heart out!', duke_score: scores, wisconsin_score: scores});
 });
 
 app.post('/echo', function(req, res) {
