@@ -30,18 +30,23 @@
        	firstScore += Math.floor((Math.random() * 10) + 1);
         secondScore += Math.floor((Math.random() * 10) + 1);
  
-        setInterval(setTime, 1000);
+        var interval = setInterval(setTime, 1000);
 
         function setTime()
         {
 	    if (totalSeconds == 30)
 	    {
-		totalSeconds = 0;
+	        secondsLabel.innerHTML = "Game Over!";
+                minutesLabel.innerHTML = "";
+		clearInterval(interval);
 	    }
-            ++totalSeconds;
-            secondsLabel.innerHTML = pad(totalSeconds%60);
-            minutesLabel.innerHTML = pad(parseInt(totalSeconds/60));
-        }
+            else
+	    {
+		++totalSeconds;
+            	secondsLabel.innerHTML = pad(totalSeconds%60);
+                minutesLabel.innerHTML = pad(parseInt(totalSeconds/60));
+            }
+	}
 
         function pad(val)
         {
